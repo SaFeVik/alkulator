@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alkulator</title>
+
+    <link rel="stylesheet" href="alkulator.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Alkulator</h1>
+        <br>
+        <p>Konverter hvilken som helst type alkohol til enheter pils!</p>
+    </header>
+
+    <div class="kalkulator">
+        <div class="drikkevarer">
+            <div class="drikkevare">
+                <div class="box">
+                    <input type="number" class="prosent">
+                    <p>%</p>
+                </div>
+                <div class="box">
+                    <input type="number" class="mengde">
+                    <p>ML</p>
+                </div>
+                <button class="slett"><i class="fa fa-trash"></i></button>
+            </div>
+        </div>
+
+        <div class="resultat">
+            <h3 id="pils">ANTALL PILS:</h3>
+            <button id="ny"><i class="fa fa-plus"></i></button>
+        </div>
+    </div>
+
+<script src="alkulator.js"></script>
+</body>
+</html>
