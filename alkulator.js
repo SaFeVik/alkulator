@@ -56,7 +56,10 @@ function kalkuler() {
             antallPils += ((prosentEl.value * mengdeEl.value)/4.5)/500
         }
     })
-    console.log(antallPils)
+    console.log(antallPils, antallPils%1)
+    if (antallPils%1 < 0.01 || antallPils%1 > 0.99){
+        antallPils = Math.round(antallPils)
+    }
     if(Math.round((antallPils % 1)*100)/100 == 0){
         pilsEl.innerHTML = `ANTALL PILS: ${Math.floor(antallPils)}`
     }else{
