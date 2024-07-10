@@ -67,9 +67,9 @@ function kalkuler() {
         antallPils = Math.round(antallPils)
     }
     if(Math.round((antallPils % 1)*100)/100 == 0){
-        pilsEl.innerHTML = `ANTALL PILS: ${Math.floor(antallPils)}`
+        pilsEl.innerHTML = `${Math.floor(antallPils)} PILS`
     }else{
-        pilsEl.innerHTML = `ANTALL PILS: ${Math.floor(antallPils)} + ${Math.round((antallPils%1)*50)/100} liter`
+        pilsEl.innerHTML = `${Math.floor(antallPils)} PILS + ${Math.round((antallPils%1)*50)/100} liter`
     }
 
 }

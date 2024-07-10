@@ -68,6 +68,7 @@ button{
 .resultat{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 #ny{
     width: 60px;
