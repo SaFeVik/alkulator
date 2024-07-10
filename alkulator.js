@@ -8,6 +8,10 @@ function nyDrikke() {
     newDrikkevare.className = 'drikkevare'
     newDrikkevare.innerHTML = `
         <div class="box">
+            <input type="number" class="antall" value="1">
+            <i class="fa fa-arrow-up-wide-short"></i>
+        </div>
+        <div class="box">
             <input type="number" class="prosent">
             <p>%</p>
         </div>
@@ -24,6 +28,7 @@ function nyDrikke() {
 
 
 function oppdaterBokser(drikkevare) {
+    const antallEl = drikkevare.querySelector('.antall')
     const prosentEl = drikkevare.querySelector('.prosent')
     const mengdeEl = drikkevare.querySelector('.mengde')
     const slettEl = drikkevare.querySelector('.slett')
@@ -40,6 +45,7 @@ function oppdaterBokser(drikkevare) {
             drikkevare.remove()
             kalkuler()
     })}
+    antallEl.addEventListener('input', kalkuler)
     prosentEl.addEventListener('input', kalkuler)
     mengdeEl.addEventListener('input', kalkuler)
 }
@@ -50,13 +56,13 @@ document.querySelectorAll('.drikkevare').forEach(oppdaterBokser)
 function kalkuler() {
     let antallPils = 0
     document.querySelectorAll('.drikkevare').forEach(drikkevare => {
+        const antallEl = drikkevare.querySelector('.antall')
         const prosentEl = drikkevare.querySelector('.prosent')
         const mengdeEl = drikkevare.querySelector('.mengde')
-        if (prosentEl.value != "" & mengdeEl.value != ""){
-            antallPils += ((prosentEl.value * mengdeEl.value)/4.5)/500
+        if (antallEl.value != "" & prosentEl.value != "" & mengdeEl.value != ""){
+            antallPils += antallEl.value * ((prosentEl.value * mengdeEl.value)/4.5)/500
         }
     })
-    console.log(antallPils, antallPils%1)
     if (antallPils%1 < 0.01 || antallPils%1 > 0.99){
         antallPils = Math.round(antallPils)
     }

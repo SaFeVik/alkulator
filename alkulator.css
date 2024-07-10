@@ -26,6 +26,12 @@ p{
     text-align: center;
     font-size: 18px;
 }
+button{
+    border-radius: 3px;
+    border-width: 1px;
+    border-color: black;
+    background-color: rgb(239,239,239);
+}
 
 .kalkulator{
     display: flex;
@@ -50,7 +56,14 @@ p{
     gap: 5px;
 }
 .box > input{
-    width: 100px;
+    width: 70px;
+    text-align: center;
+}
+.box > .prosent{
+    width: 50px;
+}
+.box > .antall{
+    width: 50px;
 }
 .resultat{
     display: flex;
@@ -59,10 +72,12 @@ p{
 #ny{
     width: 60px;
     height: 30px;
+    color: black;
 }
 .slett{
     width: 40px;
     height: 20px;
     margin-block: auto;
     transition: 0.3s;
+    color: black;
 }
