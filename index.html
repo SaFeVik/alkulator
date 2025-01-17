@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="no">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,19 +9,49 @@
     <link rel="stylesheet" href="alkulator.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 </head>
-<body>
-    <header>
-        <h1>Alkulator</h1>
-        <br>
-        <p>Konverter hvilken som helst type alkohol til antall enheter pils! (4,5%)</p>
-    </header>
 
-    <div class="kalkulator">
-        <div class="drikkevarer">
+<body>
+    <main>
+        <h1>Alkulator</h1>
+        <p>Konverter en eller flere alkoholprodukter til antall enheter pils! (4,5%)</p>
+
+        <div id="alkulator">
+            <div class="drikkevarer">
+                <div class="drikkevare">
+                    <div class="box">
+                        <input type="number" class="antall" value="1">
+                        <!-- <i class="fa fa-arrow-up-wide-short"></i> -->
+                        stk
+                    </div>
+                    <div class="box">
+                        <input type="number" class="prosent">
+                        <p>%</p>
+                    </div>
+                    <div class="box">
+                        <input type="number" class="mengde">
+                        <p>ml</p>
+                    </div>
+                    <button class="slett"><i class="fa fa-trash"></i></button>
+                </div>
+            </div>
+            <button class="ny"><i class="fa fa-plus"></i></button>
+            <p>resultat:</p>
+            <div class="resultat">
+                <h3 class="pils">PILS: 0</h3>
+            </div>
+        </div>
+
+        <div class="separator"></div>
+
+        <h1>Pilsulator</h1>
+        <p>Se pris på alkoholproduktet ditt oppgitt i PPP (Pris Per Pils)! (4,5%)</p>
+
+        <div id="pilsulator">
             <div class="drikkevare">
                 <div class="box">
-                    <input type="number" class="antall" value="1">
-                    <i class="fa fa-arrow-up-wide-short"></i>
+                    <input type="number" class="pris">
+                    <!-- <i class="fa fa-arrow-up-wide-short"></i> -->
+                    kr
                 </div>
                 <div class="box">
                     <input type="number" class="prosent">
@@ -28,18 +59,18 @@
                 </div>
                 <div class="box">
                     <input type="number" class="mengde">
-                    <p>ML</p>
+                    <p>ml</p>
                 </div>
-                <button class="slett"><i class="fa fa-trash"></i></button>
+            </div>
+            <p>resultat:</p>
+            <div class="resultat">
+                <h3 class="pils">PPP: 0kr</h3>
+                <p></p>
             </div>
         </div>
+    </main>
 
-        <div class="resultat">
-            <h3 id="pils">PILS:</h3>
-            <button id="ny"><i class="fa fa-plus"></i></button>
-        </div>
-    </div>
-
-<script src="alkulator.js"></script>
+    <script src="alkulator.js"></script>
 </body>
+
 </html>

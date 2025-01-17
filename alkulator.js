@@ -1,6 +1,18 @@
-const drikkevarerEl = document.querySelector('.drikkevarer')
-const pilsEl = document.querySelector('#pils')
-const nyEl = document.querySelector('#ny')
+const drikkevarerEl = document.querySelector('#alkulator .drikkevarer')
+const alkulatorPilsEl = document.querySelector('#alkulator .pils')
+const pilsulatorPilsEl = document.querySelector('#pilsulator .pils')
+const nyEl = document.querySelector('#alkulator .ny')
+
+const pilsulatorEl = document.querySelector('#pilsulator')
+const prisEl = pilsulatorEl.querySelector('.pris')
+const prosentEl = pilsulatorEl.querySelector('.prosent')
+const mengdeEl = pilsulatorEl.querySelector('.mengde')
+
+prisEl.addEventListener('input', kalkulerPilsulator)
+prosentEl.addEventListener('input', kalkulerPilsulator)
+mengdeEl.addEventListener('input', kalkulerPilsulator)
+
+
 nyEl.onclick = nyDrikke
 
 function nyDrikke() {
@@ -33,43 +45,51 @@ function oppdaterBokser(drikkevare) {
     const mengdeEl = drikkevare.querySelector('.mengde')
     const slettEl = drikkevare.querySelector('.slett')
 
-    if (first){
+    if (first) {
         slettEl.addEventListener('click', () => {
-                slettEl.style.backgroundColor = 'red'
-                setTimeout(() => {
-                    slettEl.style.backgroundColor = 'rgb(239,239,239)'
-                }, 300)})
-            first = false
-            }else{
+            slettEl.style.backgroundColor = 'red'
+            setTimeout(() => {
+                slettEl.style.backgroundColor = 'rgb(239,239,239)'
+            }, 300)
+        })
+        first = false
+    } else {
         slettEl.addEventListener('click', () => {
             drikkevare.remove()
-            kalkuler()
-    })}
-    antallEl.addEventListener('input', kalkuler)
-    prosentEl.addEventListener('input', kalkuler)
-    mengdeEl.addEventListener('input', kalkuler)
+            kalkulerAlkulator()
+        })
+    }
+    antallEl.addEventListener('input', kalkulerAlkulator)
+    prosentEl.addEventListener('input', kalkulerAlkulator)
+    mengdeEl.addEventListener('input', kalkulerAlkulator)
 }
 let first = true
-document.querySelectorAll('.drikkevare').forEach(oppdaterBokser)
+document.querySelectorAll('#alkulator .drikkevare').forEach(oppdaterBokser)
 
 
-function kalkuler() {
+function kalkulerAlkulator() {
     let antallPils = 0
-    document.querySelectorAll('.drikkevare').forEach(drikkevare => {
+    document.querySelectorAll('#alkulator .drikkevare').forEach(drikkevare => {
         const antallEl = drikkevare.querySelector('.antall')
         const prosentEl = drikkevare.querySelector('.prosent')
         const mengdeEl = drikkevare.querySelector('.mengde')
-        if (antallEl.value != "" & prosentEl.value != "" & mengdeEl.value != ""){
-            antallPils += antallEl.value * ((prosentEl.value * mengdeEl.value)/4.5)/500
+        if (antallEl.value != "" & prosentEl.value != "" & mengdeEl.value != "") {
+            antallPils += antallEl.value * ((prosentEl.value * mengdeEl.value) / 4.5) / 500
         }
     })
-    if (antallPils%1 < 0.01 || antallPils%1 > 0.99){
-        antallPils = Math.round(antallPils)
-    }
-    if(Math.round((antallPils % 1)*100)/100 == 0){
-        pilsEl.innerHTML = `${Math.floor(antallPils)} PILS`
-    }else{
-        pilsEl.innerHTML = `${Math.floor(antallPils)} PILS + ${Math.round((antallPils%1)*50)/100} liter`
+    alkulatorPilsEl.innerHTML = `PILS: ${Math.round(antallPils * 100) / 100}`
+}
+
+function kalkulerPilsulator() {
+    const pris = pilsulatorEl.querySelector('.pris').value
+    const prosent = pilsulatorEl.querySelector('.prosent').value/100
+    const mengde = pilsulatorEl.querySelector('.mengde').value
+    if (pris && prosent && mengde) {
+        ppp = Math.round(pris / ((prosent * mengde) / (0.045 * 500)) * 100) / 100
+        console.log(ppp)
+        pilsulatorPilsEl.innerHTML = `PPP: ${ppp}kr`
+    } else {
+        pilsulatorPilsEl.innerHTML = "PPP: 0kr"
     }
 
 }
